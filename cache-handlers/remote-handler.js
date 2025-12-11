@@ -1,6 +1,8 @@
 const Redis = require('ioredis')
 
-const client = new Redis(process.env.REDIS_URL)
+const client = new Redis(process.env.REDIS_URL, {
+  enableAutoPipelining: true,
+})
 
 console.log("setting up redis cache")
 

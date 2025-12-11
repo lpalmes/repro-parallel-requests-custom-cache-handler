@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
 		ignoreBuildErrors: true
 	},
 	cacheHandlers: {
+		default: require.resolve('./cache-handlers/remote-handler.js'),
 		remote: require.resolve('./cache-handlers/remote-handler.js'),
 	},
 };

@@ -1,10 +1,14 @@
-const { createClient } = require('redis')
+const Redis = require('ioredis')
 
-const client = createClient({ url: process.env.REDIS_URL })
-client.connect()
+const client = new Redis(process.env.REDIS_URL)
+
+console.log("setting up redis cache")
 
 module.exports = {
   async get(cacheKey, softTags) {
+
+    console.log(cacheKey)
+
     // Retrieve from Redis
     const stored = await client.get(cacheKey)
     if (!stored) return undefined
@@ -58,7 +62,8 @@ module.exports = {
         expire: entry.expire,
         revalidate: entry.revalidate,
       }),
-      { EX: entry.expire } // Use Redis TTL for automatic expiration
+      'EX',
+      entry.expire // Use Redis TTL for automatic expiration
     )
   },
 

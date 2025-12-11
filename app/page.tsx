@@ -7,9 +7,6 @@ export default function Home() {
         <h2 className="mt-8 text-xl">use cache: remote</h2>
         <Link href={`/use_cache_remote/parallel/100`}>Parallel</Link>
         <Link href={`/use_cache_remote/sequential/100`}>Sequential</Link>
-        <h2 className="mt-8 text-xl">no cache</h2>
-        <Link href={`/no_cache/parallel/100`}>Parallel</Link>
-        <Link href={`/no_cache/sequential/100`}>Sequential</Link>
       </main>
     </div>
   );
